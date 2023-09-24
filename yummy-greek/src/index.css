@@ -219,7 +219,6 @@ Buttons
 Dishes List 
 ======
 */
-
 .section {
   padding: 5rem 0;
 }
@@ -231,11 +230,38 @@ Dishes List
   margin-bottom: 3.5rem;
   margin-top: 1rem;
 }
-.cocktails-center {
+.dishes-center {
   width: var(--smallWidth);
   margin: 0 auto;
   max-width: var(--fullWidth);
   display: grid;
   row-gap: 2rem;
   column-gap: 2rem;
+}
+
+/* 
+====== 
+Dish 
+======
+*/
+.dish {
+  background: var(--mainWhite);
+  margin-bottom: 2rem;
+  box-shadow: var(--lightShadow);
+  transition: var(--mainTransition);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  border-radius: var(--mainBorderRadius);
+}
+.dish:hover {
+  box-shadow: var(--darkShadow);
+}
+.dish img {
+  height: 20rem;
+  object-fit: cover;
+  border-top-left-radius: var(--mainBorderRadius);
+  border-top-right-radius: var(--mainBorderRadius);
+}
+.dish-footer {
+  padding: 1.5rem;
 }

@@ -35,7 +35,7 @@ const DishesList = () => {
   return (
     <section className="section">
       <h2 className="section-title">dishes</h2>
-      <div className="cocktails-center">
+      <div className="dishes-center">
         {dishes.map((dish) => {
           return <Dish key={dish.id} {...dish} />;
         })}
