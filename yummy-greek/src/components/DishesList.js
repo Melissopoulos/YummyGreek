@@ -1,28 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Dish from "./Dish";
 import Loading from "./Loading";
-const url = "http://localhost:8000/dishes/";
+import { useGlobalContext } from "../context";
 
 const DishesList = () => {
-  const [loading, setLoading] = useState(false);
-  const [dishes, setDishes] = useState([]);
-
-  const fetchDishes = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      setLoading(false);
-      setDishes(data);
-    } catch (error) {
-      setLoading(false);
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchDishes();
-  }, []);
+  const { loading, dishes } = useGlobalContext();
 
   if (loading) {
     return <Loading />;
