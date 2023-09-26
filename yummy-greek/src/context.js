@@ -7,8 +7,15 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [dishes, setDishes] = useState([]);
+
   const [allergens, setAllergens] = useState([]);
   const [showAllergens, setShowAllergens] = useState(false); // State to toggle allergen display
+
+  const [dietaryPreferences, setDietaryPreferences] = useState([]);
+  const [showDietaryPreferences, setShowDietaryPreferences] = useState(false); // State to toggle dietaryPreferences display
+
+  const [price, setPrice] = useState([]);
+  const [showPriceRange, setShowPriceRange] = useState(false); // State to toggle PriceRange display
 
   //fetch data
   const fetchDishes = async () => {
@@ -26,10 +33,10 @@ const AppProvider = ({ children }) => {
             .map((dish) => {
               // First if in case there is no allergen array and some of the allergens are on the tags array
               if (Array.isArray(dish.tags)) {
-                const alergen = dish.tags.filter((item) =>
+                const allergen = dish.tags.filter((item) =>
                   item.startsWith("contains")
                 );
-                return alergen;
+                return allergen;
                 // In case there is allergens array inside the tags
               } else {
                 return dish.tags.allergens;
@@ -43,6 +50,36 @@ const AppProvider = ({ children }) => {
         ),
       ];
       setAllergens(allergensArray);
+
+      // Extract all dietaryPrefs into an Array
+      const dietaryPreferencesArray = [
+        // Use Set in order to have unique dietaryPreferences into the array
+        ...new Set(
+          data
+            .map((dish) => {
+              // First if in case there is no dietaryPreferences array and some of the dietaryPreferences are on the tags array
+              if (Array.isArray(dish.tags)) {
+                const dietaryPreferences = dish.tags.filter(
+                  (item) => !item.startsWith("contains")
+                );
+                return dietaryPreferences;
+                // In case there is allergens array inside the tags
+              } else {
+                return dish.tags.dietaryPreferences;
+              }
+            })
+            // Use reduce in order to combine the arrays into one array of dietaryPrefs
+            .reduce(
+              (accumulator, currentValue) => [...accumulator, ...currentValue],
+              []
+            )
+        ),
+      ];
+      setDietaryPreferences(dietaryPreferencesArray);
+
+      // Extract all price into an Array
+      const priceArray = data.map((dish) => dish.range);
+      setPrice(priceArray);
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -68,6 +105,36 @@ const AppProvider = ({ children }) => {
     setDishes(filteredDishes);
   };
 
+  const displayDietaryPreferences = () => {
+    setShowDietaryPreferences(true); // Show dietaryPreferences
+  };
+  const filterByDietaryPreferences = (dietaryPreferences) => {
+    const filteredDishes = dishes.filter((dish) => {
+      if (
+        dish.tags.dietaryPreferences &&
+        dish.tags.dietaryPreferences.includes(dietaryPreferences)
+      )
+        return true;
+      if (Array.isArray(dish.tags) && dish.tags.includes(dietaryPreferences))
+        return true;
+      else {
+        return false;
+      }
+    });
+    setDishes(filteredDishes);
+  };
+
+  const displayPriceRange = () => {
+    setShowPriceRange(true); // Show priceRange
+  };
+
+  const filterByPriceRange = (minPrice, maxPrice) => {
+    const filteredDishes = dishes.filter(
+      (dish) => dish.price >= minPrice && dish.price <= maxPrice
+    );
+    setDishes(filteredDishes);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -77,6 +144,14 @@ const AppProvider = ({ children }) => {
         showAllergens,
         displayAllergens,
         filterByAllergen,
+        dietaryPreferences,
+        showDietaryPreferences,
+        displayDietaryPreferences,
+        filterByDietaryPreferences,
+        price,
+        showPriceRange,
+        displayPriceRange,
+        filterByPriceRange,
       }}
     >
       {children}
