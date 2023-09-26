@@ -265,3 +265,32 @@ Dish
 .dish-footer {
   padding: 1.5rem;
 }
+.dish-section {
+  text-align: center;
+}
+.dish {
+  width: var(--smallWidth);
+  max-width: var(--fullWidth);
+  margin: 0 auto;
+  text-align: left;
+}
+.dish img {
+  border-radius: var(--mainBorderRadius);
+}
+.dish p {
+  font-weight: bold;
+  text-transform: capitalize;
+  line-height: 1.8;
+}
+.dish span {
+  margin-right: 0.5rem;
+}
+.dish-data {
+  background: var(--primaryLightColor);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--mainBorderRadius);
+  color: var(--primaryColor);
+}
+.dish-info {
+  padding-top: 2rem;
+}

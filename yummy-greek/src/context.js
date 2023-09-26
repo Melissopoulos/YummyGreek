@@ -22,7 +22,6 @@ const AppProvider = ({ children }) => {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      setLoading(false);
       setDishes(data);
       // Extract all allergens into an Array
       const allergensArray = [
@@ -76,9 +75,9 @@ const AppProvider = ({ children }) => {
       ];
       setDietaryPreferences(dietaryPreferencesArray);
     } catch (error) {
-      setLoading(false);
       console.log(error);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
