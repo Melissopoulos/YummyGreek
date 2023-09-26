@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useGlobalContext } from "../context";
 
 const Dish = ({ id, name, image, description, price }) => {
+  const { addToBasket } = useGlobalContext();
+
   return (
     <article className="dish">
       <div>
@@ -13,6 +16,7 @@ const Dish = ({ id, name, image, description, price }) => {
         <Link to={`dishes/${id}`} className="btn btn-primary btn-details">
           details
         </Link>
+        <button onClick={() => addToBasket(id)}>Add to Basket</button>
       </div>
     </article>
   );

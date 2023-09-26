@@ -16,6 +16,8 @@ const AppProvider = ({ children }) => {
 
   const [showPriceRange, setShowPriceRange] = useState(false); // State to toggle PriceRange display
 
+  const [basket, setBasket] = useState([]);
+
   //fetch data
   const fetchDishes = async () => {
     setLoading(true);
@@ -87,6 +89,8 @@ const AppProvider = ({ children }) => {
   const displayAllergens = () => {
     setShowAllergens(true); // Show allergens
   };
+
+  // Function to filter the dishes to the allergens
   const filterByAllergen = (allergen) => {
     const filteredDishes = dishes.filter((dish) => {
       if (dish.tags.allergens && dish.tags.allergens.includes(allergen))
@@ -102,6 +106,8 @@ const AppProvider = ({ children }) => {
   const displayDietaryPreferences = () => {
     setShowDietaryPreferences(true); // Show dietaryPreferences
   };
+
+  // Function to filter the dishes to the dietary preferences
   const filterByDietaryPreferences = (dietaryPreferences) => {
     const filteredDishes = dishes.filter((dish) => {
       if (
@@ -118,15 +124,23 @@ const AppProvider = ({ children }) => {
     setDishes(filteredDishes);
   };
 
+  // Show priceRange
   const displayPriceRange = () => {
-    setShowPriceRange(true); // Show priceRange
+    setShowPriceRange(true);
   };
 
+  // Function to filter the dishes to the price range
   const filterByPriceRange = (minPrice, maxPrice) => {
     const filteredDishes = dishes.filter(
       (dish) => dish.price >= minPrice && dish.price <= maxPrice
     );
     setDishes(filteredDishes);
+  };
+
+  // Function to add a dish to the basket
+  const addToBasket = (id) => {
+    const newDish = dishes.filter((item) => item.id === id);
+    setBasket([...basket, ...newDish]);
   };
 
   return (
@@ -145,6 +159,8 @@ const AppProvider = ({ children }) => {
         showPriceRange,
         displayPriceRange,
         filterByPriceRange,
+        addToBasket,
+        basket,
       }}
     >
       {children}

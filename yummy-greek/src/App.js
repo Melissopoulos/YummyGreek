@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import About from "./pages/About.js";
 import SingleDish from "./pages/SingleDish";
 import Error from "./pages/Error";
+import Basket from "./pages/Basket";
 // import components
 import Navbar from "./components/Navbar";
 
@@ -16,6 +17,7 @@ function App() {
         <Route exact path="/" element={<Home />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/dishes/:id" element={<SingleDish />}></Route>
+        <Route path="/basket" element={<Basket />}></Route>
         <Route path="*" element={<Error />}></Route>
       </Routes>
     </Router>
