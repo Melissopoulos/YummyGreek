@@ -137,17 +137,12 @@ const AppProvider = ({ children }) => {
     setDishes(filteredDishes);
   };
 
-  // Function to add a dish to the basket
-  const addToBasket = (id) => {
-    const newDish = dishes.filter((item) => item.id === id);
-    setBasket([...basket, ...newDish]);
-  };
-
   return (
     <AppContext.Provider
       value={{
         loading,
         dishes,
+        setDishes,
         allergens,
         showAllergens,
         displayAllergens,
@@ -159,8 +154,8 @@ const AppProvider = ({ children }) => {
         showPriceRange,
         displayPriceRange,
         filterByPriceRange,
-        addToBasket,
         basket,
+        setBasket,
       }}
     >
       {children}
