@@ -14,7 +14,6 @@ const AppProvider = ({ children }) => {
   const [dietaryPreferences, setDietaryPreferences] = useState([]);
   const [showDietaryPreferences, setShowDietaryPreferences] = useState(false); // State to toggle dietaryPreferences display
 
-  const [price, setPrice] = useState([]);
   const [showPriceRange, setShowPriceRange] = useState(false); // State to toggle PriceRange display
 
   //fetch data
@@ -51,7 +50,7 @@ const AppProvider = ({ children }) => {
       ];
       setAllergens(allergensArray);
 
-      // Extract all dietaryPrefs into an Array
+      // Extract all dietaryPreferences into an Array
       const dietaryPreferencesArray = [
         // Use Set in order to have unique dietaryPreferences into the array
         ...new Set(
@@ -76,10 +75,6 @@ const AppProvider = ({ children }) => {
         ),
       ];
       setDietaryPreferences(dietaryPreferencesArray);
-
-      // Extract all price into an Array
-      const priceArray = data.map((dish) => dish.range);
-      setPrice(priceArray);
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -148,7 +143,6 @@ const AppProvider = ({ children }) => {
         showDietaryPreferences,
         displayDietaryPreferences,
         filterByDietaryPreferences,
-        price,
         showPriceRange,
         displayPriceRange,
         filterByPriceRange,

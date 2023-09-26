@@ -18,7 +18,6 @@ const Categories = () => {
     showDietaryPreferences,
     displayDietaryPreferences,
     filterByDietaryPreferences,
-    price,
     showPriceRange,
     displayPriceRange,
     filterByPriceRange,
