@@ -59,6 +59,8 @@ p {
 }
 ul {
   list-style-type: none;
+  margin-top: 1.5rem;
+  margin-right: 0.2rem;
 }
 a {
   text-decoration: none;
@@ -176,6 +178,7 @@ Buttons
   background: transparent;
   border-radius: var(--mainBorderRadius);
   display: inline-block;
+  margin: 0.3rem;
 }
 .btn:hover {
   background: var(--primaryColor);
@@ -196,6 +199,15 @@ Buttons
   border-color: transparent;
 }
 .btn-primary:hover {
+  background: var(--primaryLightColor);
+  color: var(--primaryColor);
+}
+.btn-sec {
+  background: var(--primaryDarkColor);
+  color: var(--mainWhite);
+  border-color: transparent;
+}
+.btn-sec:hover {
   background: var(--primaryLightColor);
   color: var(--primaryColor);
 }
@@ -293,4 +305,37 @@ Dish
 }
 .dish-info {
   padding-top: 2rem;
+}
+/* 
+====== 
+Categories
+======
+*/
+.categories-ul {
+  display: flex;
+  width: 40%;
+  height: 10%;
+  font-size: 1.1rem;
+  margin: 0.3rem;
+  background-color: var(---mainGrey);
+  letter-spacing: 0.1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+.categories-li {
+  height: 10%;
+  display: flex;
+  background: var(--primaryLightColor);
+  padding: 0.25rem 0.25rem;
+  border-radius: var(--mainBorderRadius);
+  color: var(--primaryColor);
+  margin: 0.1rem;
+  margin-left: 0.1rem;
+  text-align: center;
+}
+.categories-li:hover {
+  background: var(--darkGrey);
+  color: var(--offWhite);
+  transition: var(--mainTransition);
+  cursor: pointer;
 }

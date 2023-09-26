@@ -25,17 +25,35 @@ const Categories = () => {
   console.log(allergens);
 
   return (
-    <div>
-      <button onClick={displayAllergens}>Allergens</button>
-      <button onClick={displayDietaryPreferences}>Dietary Preferences</button>
-      <button onClick={displayPriceRange}>Price Range</button>
+    <div className="categories">
+      <button
+        className="btn btn-primary btn-details"
+        onClick={displayAllergens}
+      >
+        Allergens
+      </button>
+      <button
+        className="btn btn-primary btn-details"
+        onClick={displayDietaryPreferences}
+      >
+        Dietary Preferences
+      </button>
+      <button
+        className="btn btn-primary btn-details"
+        onClick={displayPriceRange}
+      >
+        Price Range
+      </button>
 
       {showAllergens && (
         <div>
-          <h2>Allergens:</h2>
-          <ul>
+          <ul className="categories-ul">
             {allergens.map((allergen, index) => (
-              <li key={index} onClick={() => filterByAllergen(allergen)}>
+              <li
+                className="categories-li"
+                key={index}
+                onClick={() => filterByAllergen(allergen)}
+              >
                 {allergen}
               </li>
             ))}
@@ -45,10 +63,10 @@ const Categories = () => {
 
       {showDietaryPreferences && (
         <div>
-          <h2>DietaryPreferences:</h2>
-          <ul>
+          <ul className="categories-ul">
             {dietaryPreferences.map((dietaryPreferences, index) => (
               <li
+                className="categories-li"
                 key={index}
                 onClick={() => filterByDietaryPreferences(dietaryPreferences)}
               >
@@ -61,12 +79,12 @@ const Categories = () => {
 
       {showPriceRange && (
         <div>
-          <h2>PriceRange:</h2>
-          <ul>
+          <ul className="categories-ul">
             {priceRanges.map((priceRange, index) => {
               const [minPrice, maxPrice] = priceRange;
               return (
                 <li
+                  className="categories-li"
                   key={index}
                   onClick={() => filterByPriceRange(minPrice, maxPrice)}
                 >

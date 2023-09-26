@@ -21,7 +21,7 @@ const Dish = ({ id, name, image, description, price }) => {
   };
   //addToBasket ? "Remove from Basket" : "Add to Basket"
   return (
-    <article className="dish">
+    <div className="dish">
       <div>
         <img src={image} alt={name} />
       </div>
@@ -31,11 +31,14 @@ const Dish = ({ id, name, image, description, price }) => {
         <Link to={`dishes/${id}`} className="btn btn-primary btn-details">
           details
         </Link>
-        <button onClick={() => toggleBasket(id)}>
+        <button
+          className="btn btn-sec btn-details"
+          onClick={() => toggleBasket(id)}
+        >
           {addToBasket ? "Remove from Basket" : "Add to Basket"}
         </button>
       </div>
-    </article>
+    </div>
   );
 };
 
