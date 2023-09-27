@@ -339,3 +339,29 @@ Categories
   transition: var(--mainTransition);
   cursor: pointer;
 }
+.basket-ul {
+  width: 20%;
+  height: 10%;
+  font-size: 1.1rem;
+  margin: 0.3rem;
+  background-color: var(---mainGrey);
+  letter-spacing: 0.1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+.basket-li {
+  height: 10%;
+  background: var(--primaryDarkColor);
+  padding: 0.25rem 0.25rem;
+  border-radius: var(--mainBorderRadius);
+  color: var(--mainWhite);
+  margin: 0.1rem;
+  margin-left: 0.1rem;
+  text-align: center;
+}
+.basket-li:hover {
+  background: var(--darkGrey);
+  color: var(--offWhite);
+  transition: var(--mainTransition);
+  cursor: pointer;
+}

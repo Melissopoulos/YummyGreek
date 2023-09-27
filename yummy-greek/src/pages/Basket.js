@@ -9,10 +9,10 @@ const Basket = () => {
     <section>
       <div>
         <h2>Your Basket</h2>
-        <ul>
+        <ul className="basket-ul">
           {basket.map((item, index) => (
-            <li key={index}>
-              {item.name} - {item.price}
+            <li className="basket-li" key={index}>
+              {item.name} - {item.price} €
             </li>
           ))}
         </ul>
