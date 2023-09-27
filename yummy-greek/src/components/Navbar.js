@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useGlobalContext } from "../context";
 
 const Navbar = () => {
+  const { setDishes, allDishes } = useGlobalContext();
+
   return (
     <nav className="navbar">
       <div className="nav-center">
@@ -10,7 +13,14 @@ const Navbar = () => {
         </Link>
         <ul className="nav-links">
           <li>
-            <Link to="/">Home</Link>
+            <Link
+              to="/"
+              onClick={() => {
+                setDishes(allDishes);
+              }}
+            >
+              Home
+            </Link>
           </li>
           <li>
             <Link to="/about">About</Link>

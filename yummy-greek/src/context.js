@@ -192,6 +192,7 @@ const AppProvider = ({ children }) => {
         showAllergensItem,
         showDietaryPreferencesItem,
         showPriceRangeItem,
+        allDishes,
       }}
     >
       {children}
