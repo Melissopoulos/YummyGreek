@@ -4,7 +4,7 @@ import Loading from "./Loading";
 import { useGlobalContext } from "../context";
 
 const DishesList = () => {
-  const { loading, dishes } = useGlobalContext();
+  const { loading, dishes, showAllDishes, allDishes } = useGlobalContext();
 
   if (loading) {
     return <Loading />;

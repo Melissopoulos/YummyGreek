@@ -21,6 +21,9 @@ const Categories = () => {
     showPriceRange,
     displayPriceRange,
     filterByPriceRange,
+    showAllergensItem,
+    showDietaryPreferencesItem,
+    showPriceRangeItem,
   } = useGlobalContext();
   console.log(allergens);
 
@@ -45,7 +48,7 @@ const Categories = () => {
         Price Range
       </button>
 
-      {showAllergens && (
+      {showAllergens && showAllergensItem && (
         <div>
           <ul className="categories-ul">
             {allergens.map((allergen, index) => (
@@ -61,7 +64,7 @@ const Categories = () => {
         </div>
       )}
 
-      {showDietaryPreferences && (
+      {showDietaryPreferences && showDietaryPreferencesItem && (
         <div>
           <ul className="categories-ul">
             {dietaryPreferences.map((dietaryPreferences, index) => (
@@ -77,7 +80,7 @@ const Categories = () => {
         </div>
       )}
 
-      {showPriceRange && (
+      {showPriceRange && showPriceRangeItem && (
         <div>
           <ul className="categories-ul">
             {priceRanges.map((priceRange, index) => {

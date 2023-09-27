@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context";
 
@@ -19,7 +19,15 @@ const Dish = ({ id, name, image, description, price }) => {
       setBasket([...basket, ...newDish]);
     }
   };
-  //addToBasket ? "Remove from Basket" : "Add to Basket"
+
+  useEffect(() => {
+    const isDishInBasket = basket.some((item) => item.id === id);
+    if (isDishInBasket) {
+      console.log("ran");
+      setAddToBasket(true);
+    }
+  }, []);
+
   return (
     <div className="dish">
       <div>

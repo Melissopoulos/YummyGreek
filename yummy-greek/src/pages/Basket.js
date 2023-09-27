@@ -4,8 +4,6 @@ import { useGlobalContext } from "../context";
 
 const Basket = () => {
   const { basket } = useGlobalContext();
-  const { name, price } = basket;
-  console.log(basket);
 
   return (
     <section>
