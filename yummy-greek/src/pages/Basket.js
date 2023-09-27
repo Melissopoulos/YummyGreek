@@ -4,7 +4,12 @@ import { useGlobalContext } from "../context";
 
 const Basket = () => {
   const { basket } = useGlobalContext();
-
+  // Function to calculate the total price
+  const calculateTotalPrice = () => {
+    // Calculate the sum of prices of all dishes in the basket
+    const totalPrice = basket.reduce((total, dish) => total + dish.price, 0);
+    return totalPrice.toFixed(2); // Format to two decimal places
+  };
   return (
     <section>
       <div>
@@ -17,6 +22,7 @@ const Basket = () => {
           ))}
         </ul>
       </div>
+      <p>Total Price: {calculateTotalPrice()}€</p>
       <Link to="/" className="btn btn-primary">
         back home
       </Link>

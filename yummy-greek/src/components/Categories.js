@@ -25,7 +25,6 @@ const Categories = () => {
     showDietaryPreferencesItem,
     showPriceRangeItem,
   } = useGlobalContext();
-  console.log(allergens);
 
   return (
     <div className="categories">

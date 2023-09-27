@@ -23,7 +23,6 @@ const Dish = ({ id, name, image, description, price }) => {
   useEffect(() => {
     const isDishInBasket = basket.some((item) => item.id === id);
     if (isDishInBasket) {
-      console.log("ran");
       setAddToBasket(true);
     }
   }, []);
