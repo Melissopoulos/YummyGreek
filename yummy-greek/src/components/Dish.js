@@ -4,7 +4,7 @@ import { useGlobalContext } from "../context";
 
 const Dish = ({ id, name, image, description, price }) => {
   const { basket, setBasket, dishes } = useGlobalContext();
-  const [addToBasket, setAddToBasket] = useState(false);
+  const [addToBasket, setAddToBasket] = useState(false); //State to change the display of the toggleBasket button
   // Function to add/remove a dish from the basket
   const toggleBasket = (id) => {
     setAddToBasket(!addToBasket);
@@ -19,7 +19,7 @@ const Dish = ({ id, name, image, description, price }) => {
       setBasket([...basket, ...newDish]);
     }
   };
-
+  //useEffect in order to keep the display of the button when the dish rerenders
   useEffect(() => {
     const isDishInBasket = basket.some((item) => item.id === id);
     if (isDishInBasket) {

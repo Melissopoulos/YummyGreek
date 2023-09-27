@@ -11,19 +11,19 @@ const AppProvider = ({ children }) => {
 
   const [allergens, setAllergens] = useState([]);
   const [showAllergens, setShowAllergens] = useState(false); // State to toggle allergen display
-  const [showAllergensItem, setShowAllergensItem] = useState(false);
+  const [showAllergensItem, setShowAllergensItem] = useState(false); //State to toggle allergen display when the filterByAllergen is called
 
   const [dietaryPreferences, setDietaryPreferences] = useState([]);
   const [showDietaryPreferences, setShowDietaryPreferences] = useState(false); // State to toggle dietaryPreferences display
   const [showDietaryPreferencesItem, setShowDietaryPreferencesItem] =
-    useState(false);
+    useState(false); //State to toggle DietaryPreference display when the filterByDietaryPreference is called
 
   const [showPriceRange, setShowPriceRange] = useState(false); // State to toggle PriceRange display
-  const [showPriceRangeItem, setShowPriceRangeItem] = useState(false);
+  const [showPriceRangeItem, setShowPriceRangeItem] = useState(false); //State to toggle PriceRange display when the filterByPriceRange is called
 
   const [basket, setBasket] = useState([]); //State to keep the dishes into a basket
 
-  const [isSelected, setIsSelected] = useState(false); //State to keep the dishes into a basket
+  const [isSelected, setIsSelected] = useState(false); //State to trigger useEffect when we click the same Category
 
   //fetch data
   const fetchDishes = async () => {
@@ -89,42 +89,42 @@ const AppProvider = ({ children }) => {
     }
     setLoading(false);
   };
-
+  //useEffect to fetch the data
   useEffect(() => {
     fetchDishes();
   }, []);
-
+  //useEffect to display all the dishes again when a new filter is selected
   useEffect(() => {
     setDishes(allDishes);
   }, [showAllergens, showDietaryPreferences, showPriceRange, isSelected]);
 
   // Show allergens
   const displayAllergens = () => {
+    setShowAllergens(true);
+    setShowAllergensItem(true);
     setShowDietaryPreferences(false);
     setShowPriceRange(false);
-    setShowAllergens(true);
     setShowDietaryPreferencesItem(false);
     setShowPriceRangeItem(false);
-    setShowAllergensItem(true);
     setIsSelected(!isSelected);
   };
   // Show dietaryPreferences
   const displayDietaryPreferences = () => {
-    setShowPriceRange(false);
-    setShowAllergens(false);
     setShowDietaryPreferences(true);
     setShowDietaryPreferencesItem(true);
+    setShowPriceRange(false);
+    setShowAllergens(false);
     setShowPriceRangeItem(false);
     setShowAllergensItem(false);
     setIsSelected(!isSelected);
   };
   // Show priceRange
   const displayPriceRange = () => {
+    setShowPriceRange(true);
+    setShowPriceRangeItem(true);
     setShowAllergens(false);
     setShowDietaryPreferences(false);
-    setShowPriceRange(true);
     setShowDietaryPreferencesItem(false);
-    setShowPriceRangeItem(true);
     setShowAllergensItem(false);
     setIsSelected(!isSelected);
   };
